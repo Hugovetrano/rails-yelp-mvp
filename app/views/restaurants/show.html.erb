@@ -2,3 +2,10 @@
 <p><%= @restaurant.category %></p>
 <p><%= @restaurant.address %></p>
 <p><%= @restaurant.phone_number %></p>
+<h2>Reviews</h2>
+<%@reviews = Review.where(params[:id]) %>
+<%@reviews.each do |review| %>
+<p><%= review.rating%>/5 - <%= review.content %></p>
+<% end %>
+<%= link_to "Add a review", new_restaurant_review_path(@restaurant) %>
+<%= link_to "Back to list",  restaurants_path %>
